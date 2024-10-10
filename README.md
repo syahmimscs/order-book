@@ -35,27 +35,7 @@ A **stock order book system** that simulates concurrent buy/sell orders from mul
 
 ## Project Structure
 
-order-book/
-│
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/orderbook/
-│   │   │       ├── Main.java               # Entry point of the application
-│   │   │       ├── OrderBook.java          # Interface for order book operations
-│   │   │       ├── OrderBookImpl.java      # Implementation of the order book interface
-│   │   │       ├── Stock.java              # Stock entity representing a stock in the order book
-│   │   │       ├── Broker.java             # Broker class, simulates buy/sell orders
-│   │   │       ├── DatabaseConnectionPool.java # HikariCP connection pool setup
-│   │   │       └── OrderBookService.java   # Service class that manages order operations
-│   │   └── resources/
-│   └── test/
-│       └── java/
-│           └── com/orderbook/
-│               └── OrderBookTest.java      # JUnit tests for the order book
-│
-├── pom.xml                                 # Maven configuration file
-└── README.md                               # Project documentation
+<img width="560" alt="image" src="https://github.com/user-attachments/assets/cf672264-a35e-416f-97b7-f595429e9d71">
 
 ---
 
