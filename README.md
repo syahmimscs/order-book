@@ -11,7 +11,6 @@ A **stock order book system** that simulates concurrent buy/sell orders from mul
   - [Installation](#installation)
 - [Usage](#usage)
 - [Testing](#testing)
-- [License](#license)
 
 ---
 
