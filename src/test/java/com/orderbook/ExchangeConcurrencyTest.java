@@ -1,15 +1,16 @@
 package com.orderbook;
 
-import com.orderbook.exchange.exchange.Exchange;
-import com.orderbook.exchange.models.*;
-import org.junit.jupiter.api.Test;
-// import org.junit.Test;
-
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import org.junit.jupiter.api.Test;
+
+import com.orderbook.exchange.exchange.Exchange;
+import com.orderbook.exchange.models.IOrder;
+import com.orderbook.exchange.models.Order;
+import com.orderbook.exchange.models.OrderType;
 
 class ExchangeConcurrencyTest {
 
@@ -20,7 +21,7 @@ class ExchangeConcurrencyTest {
         int ordersPerThread = 50;
 
         ExecutorService executor = Executors.newFixedThreadPool(numThreads);
-        CountDownLatch latch = new CountDownLatch(numThreads); // To coordinate thread start
+        CountDownLatch latch = new CountDownLatch(numThreads); 
 
         // Create multiple threads to add orders concurrently
         for (int i = 0; i < numThreads; i++) {
@@ -41,7 +42,7 @@ class ExchangeConcurrencyTest {
         executor.shutdown();
         boolean finished = executor.awaitTermination(10, java.util.concurrent.TimeUnit.SECONDS);
 
-        // Verify that all threads completed without throwing exceptions
+        
         assertDoesNotThrow(() -> {
             if (!finished)
                 throw new RuntimeException("Threads did not finish in time.");

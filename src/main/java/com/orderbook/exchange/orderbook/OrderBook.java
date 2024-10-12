@@ -191,11 +191,11 @@ public class OrderBook implements IOrderBook {
 
     @Override
     public void stopMatchingService() {
-        matchingService.stop(); // Stop the matching service
+        matchingService.stop(); 
         try {
-            matchingThread.join(); // Wait for the thread to finish
+            matchingThread.join(); 
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // Handle interruption
+            Thread.currentThread().interrupt(); 
         }
     }
 
