@@ -34,4 +34,13 @@ public class Exchange implements IExchange {
             orderBook.printOrderBook();
         }
     }
+
+    // Stop all matching services when shutting down
+    public void stopAllMatchingServices() {
+        orderBooks.values().forEach(orderBook -> {
+            if (orderBook instanceof OrderBook) { // Ensure it's the correct type
+                ((OrderBook) orderBook).stopMatchingService(); // Stop the matching service
+            }
+        });
+    }
 }

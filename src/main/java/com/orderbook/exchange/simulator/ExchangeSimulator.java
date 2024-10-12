@@ -1,7 +1,8 @@
 package com.orderbook.exchange.simulator;
 
-import com.orderbook.exchange.exchange.*;
-import com.orderbook.exchange.producers.*;
+import com.orderbook.exchange.exchange.Exchange;
+import com.orderbook.exchange.exchange.IExchange;
+import com.orderbook.exchange.producers.OrderProducer;
 
 public class ExchangeSimulator {
     public static void main(String[] args) {
@@ -12,6 +13,11 @@ public class ExchangeSimulator {
             Thread producerThread = new Thread(new OrderProducer(exchange));
             producerThread.start();
         }
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("Shutting down exchange...");
+            ((Exchange) exchange).stopAllMatchingServices(); // Stop all services
+        }));
 
         while (true) {
             try {
