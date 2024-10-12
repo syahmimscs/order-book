@@ -180,6 +180,16 @@ public class OrderBook implements IOrderBook {
     }
 
     @Override
+    public boolean isEmpty() {
+        rwLock.readLock().lock();
+        try {
+            return buyOrders.isEmpty() && sellOrders.isEmpty();
+        } finally {
+            rwLock.readLock().unlock();
+        }
+    }
+
+    @Override
     public void stopMatchingService() {
         matchingService.stop(); // Stop the matching service
         try {

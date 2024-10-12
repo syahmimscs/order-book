@@ -1,10 +1,12 @@
 package com.orderbook.exchange.exchange;
 
-import com.orderbook.exchange.orderbook.*;
-import com.orderbook.exchange.models.*;
-
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+
+import com.orderbook.exchange.models.IOrder;
+import com.orderbook.exchange.models.OrderType;
+import com.orderbook.exchange.orderbook.IOrderBook;
+import com.orderbook.exchange.orderbook.OrderBook;
 
 public class Exchange implements IExchange {
     private final Map<String, IOrderBook> orderBooks;
@@ -35,12 +37,14 @@ public class Exchange implements IExchange {
         }
     }
 
+    @Override
+    public IOrderBook getOrderBook(String ticker) {
+        return orderBooks.get(ticker);
+    }
+
     // Stop all matching services when shutting down
     public void stopAllMatchingServices() {
-        orderBooks.values().forEach(orderBook -> {
-            if (orderBook instanceof OrderBook) { // Ensure it's the correct type
-                ((OrderBook) orderBook).stopMatchingService(); // Stop the matching service
-            }
-        });
+        orderBooks.values().forEach(IOrderBook::stopMatchingService);
     }
+
 }

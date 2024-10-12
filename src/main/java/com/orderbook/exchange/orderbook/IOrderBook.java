@@ -10,4 +10,6 @@ public interface IOrderBook {
     void printOrderBook();
     
     void stopMatchingService();
+
+    boolean isEmpty();
 }
