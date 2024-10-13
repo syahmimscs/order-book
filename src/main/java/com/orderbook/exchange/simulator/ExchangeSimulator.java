@@ -15,8 +15,9 @@ public class ExchangeSimulator {
         }
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("Shutting down exchange...");
+            
             ((Exchange) exchange).stopAllMatchingServices(); // Stop all services
+            System.out.println("Shut down exchange...");
         }));
 
         while (true) {
