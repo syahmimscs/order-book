@@ -35,21 +35,6 @@ public class OrderBook implements IOrderBook {
         matchingThread.start(); // Start the matching service thread
     }
 
-    // @Override
-    // public void addOrder(IOrder order) {
-    //     rwLock.writeLock().lock();
-    //     try {
-    //         if (order.getType() == OrderType.BUY) {
-    //             buyOrders.offer(order);
-    //         } else if (order.getType() == OrderType.SELL) {
-    //             sellOrders.offer(order);
-    //         }
-    //         matchOrders();
-    //     } finally {
-    //         rwLock.writeLock().unlock();
-    //     }
-    // }
-
     @Override
     public void addOrder(IOrder order) {
         rwLock.writeLock().lock();
@@ -63,39 +48,6 @@ public class OrderBook implements IOrderBook {
             rwLock.writeLock().unlock();
         }
     }
-
-    // private void matchOrders() {
-    //     rwLock.writeLock().lock();
-    //     try {
-    //         while (!buyOrders.isEmpty() && !sellOrders.isEmpty()) {
-    //             IOrder buyOrder = buyOrders.peek();
-    //             IOrder sellOrder = sellOrders.peek();
-
-    //             if (buyOrder.getPrice() >= sellOrder.getPrice()) {
-    //                 int tradedQuantity = Math.min(buyOrder.getQuantity(), sellOrder.getQuantity());
-    //                 double tradePrice = sellOrder.getPrice();
-
-    //                 System.out.println("Matched Order: BUY " + tradedQuantity + " of " + ticker +
-    //                         " at $" + tradePrice + " [Order IDs: BUY#" + buyOrder.getOrderId() +
-    //                         " & SELL#" + sellOrder.getOrderId() + "]");
-
-    //                 buyOrder.reduceQuantity(tradedQuantity);
-    //                 sellOrder.reduceQuantity(tradedQuantity);
-
-    //                 if (buyOrder.getQuantity() == 0) {
-    //                     buyOrders.poll(); // Remove fully matched buy order
-    //                 }
-    //                 if (sellOrder.getQuantity() == 0) {
-    //                     sellOrders.poll(); // Remove fully matched sell order
-    //                 }
-    //             } else {
-    //                 break; // No more matching orders
-    //             }
-    //         }
-    //     } finally {
-    //         rwLock.writeLock().unlock();
-    //     }
-    // }
 
     public void matchOrders() {
         rwLock.writeLock().lock();
@@ -139,26 +91,6 @@ public class OrderBook implements IOrderBook {
             rwLock.writeLock().unlock();
         }
     }
-
-    // @Override
-    // public void printOrderBook() {
-    //     rwLock.readLock().lock();
-    //     try {
-    //         System.out.println("\nOrder Book for " + ticker);
-    //         System.out.println("Buy Orders:");
-    //         for (IOrder order : buyOrders) {
-    //             System.out.println("BUY " + order.getQuantity() + " at $" + order.getPrice() +
-    //                     " [Order ID: " + order.getOrderId() + "]");
-    //         }
-    //         System.out.println("Sell Orders:");
-    //         for (IOrder order : sellOrders) {
-    //             System.out.println("SELL " + order.getQuantity() + " at $" + order.getPrice() +
-    //                     " [Order ID: " + order.getOrderId() + "]");
-    //         }
-    //     } finally {
-    //         rwLock.readLock().unlock();
-    //     }
-    // }
 
     @Override
     public void printOrderBook() {

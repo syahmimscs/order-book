@@ -4,7 +4,7 @@ import com.orderbook.exchange.orderbook.OrderBook;
 
 public class OrderMatchingService implements Runnable {
     private final OrderBook orderBook;
-    private volatile boolean running = true; // To control the matching thread
+    private volatile boolean running = true; // control the matching thread
 
     public OrderMatchingService(OrderBook orderBook) {
         this.orderBook = orderBook;
@@ -15,7 +15,7 @@ public class OrderMatchingService implements Runnable {
         while (running) {
             orderBook.matchOrders(); // Continuously attempt to match orders
             try {
-                Thread.sleep(100); // Prevent busy waiting, adjust delay as needed
+                Thread.sleep(100); 
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 break;

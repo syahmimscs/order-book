@@ -1,13 +1,12 @@
 package com.orderbook;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Test;
+
 import com.orderbook.exchange.exchange.Exchange;
-import com.orderbook.exchange.models.IOrder;
 import com.orderbook.exchange.models.Order;
 import com.orderbook.exchange.models.OrderType;
 import com.orderbook.exchange.orderbook.IOrderBook;
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OrderMatchingTest {
 

@@ -7,8 +7,6 @@ import com.orderbook.exchange.orderbook.IOrderBook;
 public interface IExchange {
     void addOrder(IOrder order);
     boolean cancelOrder(String ticker, long orderId, OrderType type);
-
     void printOrderBooks();
-
     IOrderBook getOrderBook(String ticker);
 }
