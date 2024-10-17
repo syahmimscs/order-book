@@ -46,5 +46,4 @@ public class Exchange implements IExchange {
     public void stopAllMatchingServices() {
         orderBooks.values().forEach(IOrderBook::stopMatchingService);
     }
-
 }

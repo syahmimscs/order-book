@@ -123,11 +123,21 @@ public class OrderBook implements IOrderBook {
 
     @Override
     public void stopMatchingService() {
-        matchingService.stop(); 
+        matchingService.stop();
         try {
-            matchingThread.join(); 
+            matchingThread.join();
         } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); 
+            Thread.currentThread().interrupt();
+        }
+    }
+    
+    @Override
+    public int getTotalOrderCount() {
+        rwLock.readLock().lock(); // Use read lock to ensure thread safety
+        try {
+            return buyOrders.size() + sellOrders.size(); // Count the total number of buy and sell orders
+        } finally {
+            rwLock.readLock().unlock();
         }
     }
 

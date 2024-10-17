@@ -7,7 +7,7 @@ import com.orderbook.exchange.producers.OrderProducer;
 public class ExchangeSimulator {
     public static void main(String[] args) {
         IExchange exchange = new Exchange();
-
+        
         int numberOfProducers = 5;
         for (int i = 0; i < numberOfProducers; i++) {
             Thread producerThread = new Thread(new OrderProducer(exchange));
@@ -16,7 +16,7 @@ public class ExchangeSimulator {
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             
-            ((Exchange) exchange).stopAllMatchingServices(); // Stop all services
+            ((Exchange) exchange).stopAllMatchingServices();
             System.out.println("Shut down exchange...");
         }));
 

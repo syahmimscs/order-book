@@ -47,5 +47,23 @@ class ExchangeConcurrencyTest {
             if (!finished)
                 throw new RuntimeException("Threads did not finish in time.");
         });
+
+
+
+        // Visual representation for sake of demo. 
+
+
+        // Print the state of the order book after all threads have finished
+        
+        // System.out.println("Final state of the order book:");
+        // exchange.printOrderBooks();  // Method to display all orders in the order book
+
+        // // Validate the total number of orders placed in the AAPL order book
+        // int totalExpectedOrders = numThreads * ordersPerThread;
+        // int totalOrdersInOrderBook = exchange.getOrderBook("AAPL").getTotalOrderCount(); // Custom method to count total orders in the order book
+        // System.out.println(totalExpectedOrders);
+        // System.out.println(totalOrdersInOrderBook);
+        // assertEquals(totalExpectedOrders, totalOrdersInOrderBook, 
+        //     "The number of orders in the order book should match the total number of orders placed.");
     }
 }
