@@ -26,8 +26,6 @@ A **stock order book system** that simulates concurrent buy/sell orders from mul
 
 ## Technologies Used
 - **Java**: The core language used for developing the application.
-- **HikariCP**: For managing the database connection pool.
-- **MySQL**: As the database for storing stock and order data.
 - **Maven**: For dependency management and building the project.
 - **JUnit**: For testing the functionality of the order book system.
 
@@ -35,7 +33,43 @@ A **stock order book system** that simulates concurrent buy/sell orders from mul
 
 ## Project Structure
 
-<img width="560" alt="image" src="https://github.com/user-attachments/assets/cf672264-a35e-416f-97b7-f595429e9d71">
+Stock-Exchange-Simulation/
+│
+├── README.md                  # Project documentation
+├── pom.xml                    # Maven build file with dependencies
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │       └── com/
+│   │           └── orderbook/
+│   │               ├── exchange/
+│   │               │   ├── Exchange.java             # Core exchange logic
+│   │               │   ├── IExchange.java            # Exchange interface
+│   │               ├── models/
+│   │               │   ├── IOrder.java               # Interface for orders
+│   │               │   ├── Order.java                # Order implementation
+│   │               │   ├── OrderType.java            # Enum for BUY and SELL types
+│   │               ├── orderbook/
+│   │               │   ├── IOrderBook.java           # Interface for order book operations
+│   │               │   ├── OrderBook.java            # Order book implementation (buy/sell queues)
+│   │               ├── producers/
+│   │               │   ├── OrderProducer.java        # Simulates brokers placing orders
+│   │               ├── simulator/
+│   │               │   └── ExchangeSimulator.java    # Main simulation entry point
+│   │               └── service/
+│   │                   ├── OrderMatchingService.java # Background service to match buy/sell orders
+│   │  
+│   ├── test/
+│       └── java/
+│           └── com/
+│               └── orderbook/
+│                   ├── ExchangeConcurrencyTest.java  # Test for concurrency handling in the exchange
+│                   ├── OrderCancellationTest.java    # Test for order cancellation logic
+│                   ├── OrderMatchingTest.java        # Test for order matching logic
+│                   ├── ShutdownTest.java             # Test to validate graceful service shutdown
+│
+└── target/                                           # Generated classes and compiled output (automatically created by Maven)
+
 
 ---
 
@@ -45,7 +79,6 @@ A **stock order book system** that simulates concurrent buy/sell orders from mul
 Before you begin, ensure you have the following installed:
 - **Java JDK 8 or higher**: Download from [Oracle's JDK page](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html).
 - **Maven**: For building and running the project. Install from [Maven’s website](https://maven.apache.org/install.html).
-- **MySQL**: Install MySQL for the backend database. Download from [MySQL](https://dev.mysql.com/downloads/installer/).
 
 ### Installation
 
@@ -66,7 +99,7 @@ mvn clean compile
 ### Running The Application
 To run the application and simulate brokers placing orders, use the following Maven command:
 ```bash
-mvn exec:java -Dexec.mainClass="com.orderbook.Main"
+mvn exec:java -Dexec.mainClass="com.ordebook.exchange.simulator"
 ```
 
 This will start the program and simulate multiple brokers placing buy and sell orders concurrently.
@@ -80,6 +113,11 @@ To run all the unit tests, use the following Maven command:
 
 ```bash
 mvn test
+```
+To run a specific test (e.g., ExchangeConcurrencyTest)
+
+```bash
+mvn -Dtest=com.orderbook.ExchangeConcurrencyTest test
 ```
 
 You will see a report summarizing the test results, ensuring that the order book behaves as expected under different scenarios, including concurrent operations.
