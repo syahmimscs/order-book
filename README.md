@@ -1,6 +1,6 @@
-# Order Book System
+# Stock Exchange Order Book System
 
-A **stock order book system** that simulates concurrent buy/sell orders from multiple brokers using **Java multithreading** and **HikariCP** for database connection pooling. This project demonstrates handling shared resources with multithreading, preventing race conditions, and ensuring thread safety using Java's concurrency utilities.
+A **stock order book system** that simulates concurrent buy/sell orders from multiple brokers using **Java multithreading**. This project demonstrates handling shared resources with multithreading, preventing race conditions, and ensuring thread safety using Java's concurrency utilities. For a more detailed breakdown beyond defined in this README.md, refer to [Project Documentation](./docs/T3_APD_Documentation.pdf)
 
 ## Table of Contents
 - [Features](#features)
