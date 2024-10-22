@@ -1,6 +1,10 @@
 # Stock Exchange Order Book System
 
-A **stock order book system** that simulates concurrent buy/sell orders from multiple brokers using **Java multithreading**. This project demonstrates handling shared resources with multithreading, preventing race conditions, and ensuring thread safety using Java's concurrency utilities. For a more detailed breakdown beyond defined in this README.md, refer to [Project Documentation](./docs/T3_APD_Documentation.pdf).
+A **simplified stock order book system** designed to simulate real-world scenarios where multiple brokers place buy and sell orders concurrently using **Java multithreading**. 
+
+This project showcases how key concepts in concurrent programming, such as race condition prevention, resource management, and thread safety, can be applied to build a robust and scalable system—closely mirroring real-world stock trading environments.
+
+For a more detailed breakdown beyond defined in this README.md, refer to [Project Documentation](./docs/T3_APD_Documentation.pdf).
 
 ## Table of Contents
 - [Features](#features)
