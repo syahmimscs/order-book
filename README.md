@@ -18,8 +18,6 @@ A **stock order book system** that simulates concurrent buy/sell orders from mul
 - Simulates a centralized stock order book where multiple brokers place buy and sell orders concurrently.
 - Uses **ReentrantLock** to handle thread safety and prevent race conditions when accessing shared stock resources.
 - **ExecutorService** is used to manage the broker threads efficiently.
-- Integrated with **HikariCP** for efficient database connection pooling.
-- Connects to a **MySQL database** for storing stock and order data.
 - Demonstrates handling of concurrency using locks, synchronized blocks, and thread management techniques.
 
 ---
@@ -33,42 +31,7 @@ A **stock order book system** that simulates concurrent buy/sell orders from mul
 
 ## Project Structure
 
-Stock-Exchange-Simulation/
-│
-├── README.md                  # Project documentation
-├── pom.xml                    # Maven build file with dependencies
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │       └── com/
-│   │           └── orderbook/
-│   │               ├── exchange/
-│   │               │   ├── Exchange.java             # Core exchange logic
-│   │               │   ├── IExchange.java            # Exchange interface
-│   │               ├── models/
-│   │               │   ├── IOrder.java               # Interface for orders
-│   │               │   ├── Order.java                # Order implementation
-│   │               │   ├── OrderType.java            # Enum for BUY and SELL types
-│   │               ├── orderbook/
-│   │               │   ├── IOrderBook.java           # Interface for order book operations
-│   │               │   ├── OrderBook.java            # Order book implementation (buy/sell queues)
-│   │               ├── producers/
-│   │               │   ├── OrderProducer.java        # Simulates brokers placing orders
-│   │               ├── simulator/
-│   │               │   └── ExchangeSimulator.java    # Main simulation entry point
-│   │               └── service/
-│   │                   ├── OrderMatchingService.java # Background service to match buy/sell orders
-│   │  
-│   ├── test/
-│       └── java/
-│           └── com/
-│               └── orderbook/
-│                   ├── ExchangeConcurrencyTest.java  # Test for concurrency handling in the exchange
-│                   ├── OrderCancellationTest.java    # Test for order cancellation logic
-│                   ├── OrderMatchingTest.java        # Test for order matching logic
-│                   ├── ShutdownTest.java             # Test to validate graceful service shutdown
-│
-└── target/                                           # Generated classes and compiled output (automatically created by Maven)
+Stock-Exchange-Simulation/ ├── README.md # Project documentation ├── pom.xml # Maven build file with dependencies ├── src/ │ ├── main/ │ │ ├── java/ │ │ └── com/ │ │ └── orderbook/ │ │ ├── exchange/ │ │ │ ├── Exchange.java # Core exchange logic │ │ │ ├── IExchange.java # Exchange interface │ │ ├── models/ │ │ │ ├── IOrder.java # Interface for orders │ │ │ ├── Order.java # Order implementation │ │ │ ├── OrderType.java # Enum for BUY and SELL types │ │ ├── orderbook/ │ │ │ ├── IOrderBook.java # Interface for order book operations │ │ │ ├── OrderBook.java # Order book implementation (buy/sell queues) │ │ ├── producers/ │ │ │ ├── OrderProducer.java # Simulates brokers placing orders │ │ ├── simulator/ │ │ │ └── ExchangeSimulator.java # Main simulation entry point │ │ └── service/ │ │ ├── OrderMatchingService.java # Background service to match buy/sell orders │ ├── test/ │ └── java/ │ └── com/ │ └── orderbook/ │ ├── ExchangeConcurrencyTest.java # Test for concurrency handling in the exchange │ ├── OrderCancellationTest.java # Test for order cancellation logic │ ├── OrderMatchingTest.java # Test for order matching logic │ ├── ShutdownTest.java # Test to validate graceful service shutdown │ └── target/ # Generated classes and compiled output (automatically created by Maven)
 
 
 ---
