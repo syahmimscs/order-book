@@ -30,9 +30,7 @@ A **stock order book system** that simulates concurrent buy/sell orders from mul
 ---
 
 ## Project Structure
-
 ![Project Structure](./assets/project-structure.png)
-
 ---
 
 ## Getting Started
